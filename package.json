@@ -1,0 +1,14 @@
+{
+  "name": "opentalkjs",
+  "version": "1.0.0",
+  "description": "chatbot app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jenish",
+  "license": "ISC",
+  "dependencies": {
+    "ollama": "^0.5.11"
+  }
+}
