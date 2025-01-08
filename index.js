@@ -1,40 +1,30 @@
-// import ollama from "ollama";
-
-// askQuestion()
-// async function askQuestion() {
-//   try {
-//     const response = await ollama.chat({
-//       model: "llama3.2:1b",
-//       messages: [{ role: 'user', content: "Write a short story plot" }]
-//     });
-
-//     console.log("Chatbot Response:", response.message.content);
-//   } catch (error) {
-//     console.error("Error occurred:", error.message);
-//   }
-// }
-
-
-// ------------------------------------------------------------------
-//Stage 2:
-// ------------------------------------------------------------------
-
 import ollama from "ollama";
 import fs from "fs";
+let subDir = process.argv;
+getQuestion(subDir);
 
-let q= fs.readFileSync("./q.txt", "utf-8");
-console.log(q)
-
-askQuestion()
-async function askQuestion() {
+async function getAnswer(q, question) {
   try {
     const response = await ollama.chat({
       model: "llama3.2:1b",
-      messages: [{ role: 'user', content: q }]
+      messages: [{ role: "user", content: question }],
     });
+    fs.mkdirSync(`./Answers/${subDir[2]}`, { recursive: true });
+    let answer_path = `./Answers/${subDir[2]}/a${q}.txt`;
+    fs.writeFileSync(answer_path, response.message.content);
+  } catch (error) {
+    console.error("Error occurred:", error.message);
+  }
+}
 
-    fs.writeFileSync("./a.txt", response.message.content);
-
+function getQuestion(subDir) {
+  try {
+    let q = Math.floor(Math.random() * 3) + 1;
+    let p = `./Questions/${subDir[2]}/q${q}.txt`;
+    console.log(p);
+    let question = fs.readFileSync(p, "utf-8");
+    console.log(question);
+    getAnswer(q, question);
   } catch (error) {
     console.error("Error occurred:", error.message);
   }
