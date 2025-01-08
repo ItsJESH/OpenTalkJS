@@ -1,0 +1,65 @@
+I can help you create API documentation using standard guidelines. What type of API do you want to document (e.g., REST, GraphQL, SOAP)? Also, what are the main endpoints and methods you plan to include? 
+
+If not provided, I'll suggest a basic example for each type:
+
+**REST API Documentation**
+
+* **Endpoint:** `GET /users/{id}`
+* **Method:** `GET`
+* **Description:** Retrieve a user by ID
+* **Responses:**
+	+ 200 OK: User found
+	+ 404 Not Found: User not found
+
+Example response:
+```json
+{
+  "id": 1,
+  "name": "John Doe",
+  "email": "john.doe@example.com"
+}
+```
+
+**GraphQL API Documentation**
+
+* **Endpoint:** `GET /users/{id}`
+* **Method:** `query`
+* **Description:** Retrieve a user by ID using GraphQL
+* **Queries:**
+	+ `user:{id}` - Get a user by ID
+	+ `user{email} - Get the email of a user by name
+
+Example query:
+```graphql
+query User {
+  user(id: 1) {
+    name
+    email
+  }
+}
+```
+
+**SOAP API Documentation**
+
+* **Endpoint:** `GET /users/{id}`
+* **Method:** `XML-RPC`
+* **Description:** Retrieve a user by ID using SOAP
+* **Messages:**
+	+ `GetUserResponse` - User found
+
+Example message:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP-ENV:Body>
+    <GetUserRequest>
+      <GetUserResponse>
+        <UserName>John Doe</UserName>
+        <UserEmail>johndoe@example.com</UserEmail>
+      </GetUserResponse>
+    </GetUserRequest>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
+
+Please let me know which API type you want to document, and I'll provide the documentation in the format you requested.
