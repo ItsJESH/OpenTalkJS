@@ -75,3 +75,5 @@ Thumbs.db
 *.idea/
 *.vscode/
 *.history/
+
+p.py
